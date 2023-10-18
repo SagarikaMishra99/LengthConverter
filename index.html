@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Length Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        #container {
+            margin-top: 100px;
+        }
+        
+        #lengthInput {
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        #convertButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Length Converter</h1>
+        <input type="number" id="lengthInput" placeholder="Enter length in meters">
+        <button id="convertButton">Convert</button>
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        const convertButton = document.getElementById('convertButton');
+        const lengthInput = document.getElementById('lengthInput');
+        const resultDiv = document.getElementById('result');
+        
+        convertButton.addEventListener('click', () => {
+            const inputValue = parseFloat(lengthInput.value);
+            
+            if (!isNaN(inputValue)) {
+                const convertedValue = inputValue * 3.28084; // Conversion factor from meters to feet
+                resultDiv.textContent = `${inputValue} meters is approximately ${convertedValue.toFixed(2)} feet.`;
+            } else {
+                resultDiv.textContent = 'Please enter a valid length in meters.';
+            }
+        });
+    </script>
+</body>
+</html>
